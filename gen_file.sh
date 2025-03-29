@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVICE_NAME="payment"
+SERVICE_NAME="order"
 
 mkdir ${SERVICE_NAME}
 touch ${SERVICE_NAME}/${SERVICE_NAME}.proto

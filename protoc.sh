@@ -7,7 +7,7 @@ EMAIL=$3
 GH_TOKEN=$4
 GH_REPOSITORY=$5
 
-SERVICES=("auth" "course" "payment" "user")
+SERVICES=("auth" "course" "payment" "user", "order")
 
 git config user.name "$USER_NAME"
 git config user.email "$EMAIL"
