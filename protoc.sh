@@ -34,11 +34,10 @@ go mod init \
 go mod tidy
 cd ../../
 
-git remote set-url origin "https://x-access-token:${{ GH_TOKEN }}@github.com/${{ GH_REPOSITORY }}"
+git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GH_REPOSITORY}
 git remote -v
 git add .
-git commit -m "Proto update for ${{ matrix.service }} - ${{ env.RELEASE_VERSION }}" || echo "No changes to commit"
+git commit -m "Proto update for ${SERVICE_NAME} - ${RELEASE_VERSION}" || echo "No changes to commit"
 git push origin HEAD:main
-git tag -fa "golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}" -m "golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}"
-git push origin "refs/tags/golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}"
-
+git tag -fa "golang/${SERVICE_NAME}/${RELEASE_VERSION}" -m "golang/${SERVICE_NAME}/${RELEASE_VERSION}"
+git push origin "refs/tags/golang/${SERVICE_NAME}/${RELEASE_VERSION}"
