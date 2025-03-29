@@ -32,4 +32,11 @@ go mod init \
 go mod tidy
 cd ../../
 
-echo "Finish protoc generation for ${SERVICE_NAME}"
+git remote set-url origin "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
+git remote -v
+git add .
+git commit -m "Proto update for ${{ matrix.service }} - ${{ env.RELEASE_VERSION }}" || echo "No changes to commit"
+git push origin HEAD:main
+git tag -fa "golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}" -m "golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}"
+git push origin "refs/tags/golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}"
+

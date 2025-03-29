@@ -24,14 +24,4 @@ jobs:
         run: |
           chmod +x "${GITHUB_WORKSPACE}/protoc.sh"
           ls -alh ${GITHUB_WORKSPACE}
-          ./protoc.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION}} ${{ github.actor }} ${{ github.actor }}@users.noreply.github.com
-
-      - name: Push changes and tags using GH_TOKEN
-        run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}
-          git remote -v
-          git add .
-          git commit -m "Proto update for ${{ matrix.service }} - ${{ env.RELEASE_VERSION }}" || echo "No changes to commit"
-          git push origin HEAD:main -f
-          git tag -fa golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }} -m "golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}"
-          git push origin refs/tags/golang/${{ matrix.service }}/${{ env.RELEASE_VERSION }}
+          ./protoc.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION}} ${{ github.actor }} ${{ github.actor }}@users.noreply.github.com ${{ secrets.GH_TOKEN }} ${{ github.repository }
