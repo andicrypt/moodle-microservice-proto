@@ -1,11 +1,11 @@
 #!/bin/bash
 
 DIR="golang"
-RELEASE_VERSION=$2
-USER_NAME=$3
-EMAIL=$4
-GH_TOKEN=$5
-GH_REPOSITORY=$6
+RELEASE_VERSION=$1
+USER_NAME=$2
+EMAIL=$3
+GH_TOKEN=$4
+GH_REPOSITORY=$5
 
 SERVICES=("auth" "course" "payment" "user")
 
