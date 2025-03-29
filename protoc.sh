@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DIR="golang"
 SERVICE_NAME=$1
 RELEASE_VERSION=$2
 USER_NAME=$3
@@ -12,6 +13,14 @@ git fetch --all && git checkout main
 sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+if [ ! -d "$DIR" ]; then
+  echo "Directory $DIR does not exist. Creating it..."
+  mkdir -p "$DIR"
+else
+  echo "Directory $DIR already exists."
+fi
+
 protoc --go_out=./golang --go_opt=paths=source_relative \
   --go-grpc_out=./golang --go-grpc_opt=paths=source_relative \
  ./${SERVICE_NAME}/*.proto
