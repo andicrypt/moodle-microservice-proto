@@ -34,7 +34,7 @@ go mod init \
 go mod tidy
 cd ../../
 
-git remote set-url origin "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
+git remote set-url origin "https://x-access-token:${{ GH_TOKEN }}@github.com/${{ GH_REPOSITORY }}"
 git remote -v
 git add .
 git commit -m "Proto update for ${{ matrix.service }} - ${{ env.RELEASE_VERSION }}" || echo "No changes to commit"
