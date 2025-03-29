@@ -8,9 +8,9 @@ jobs:
   protoc:
     name: "Generate"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        service: ["auth", "course", "payment", "user"]
+    # strategy:
+    #   matrix:
+    #     service: ["auth", "course", "payment", "user"]
     steps:
       - name: Install Go
         uses: actions/setup-go@v2
@@ -24,4 +24,4 @@ jobs:
         run: |
           chmod +x "${GITHUB_WORKSPACE}/protoc.sh"
           ls -alh ${GITHUB_WORKSPACE}
-          ./protoc.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION}} ${{ github.actor }} ${{ github.actor }}@users.noreply.github.com ${{ secrets.GH_TOKEN }} ${{ github.repository }}
+          ./protoc.sh ${{ env.RELEASE_VERSION }} ${{ github.actor }} ${{ github.actor }}@users.noreply.github.com ${{ secrets.GH_TOKEN }} ${{ github.repository }}
