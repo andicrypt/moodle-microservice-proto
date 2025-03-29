@@ -5,8 +5,7 @@ SERVICE_NAME=$1
 RELEASE_VERSION=$2
 USER_NAME=$3
 EMAIL=$4
-GH_TOKEN=$5
-GH_REPOSITORY=$6
+
 
 
 git config user.name "$USER_NAME"
@@ -32,12 +31,5 @@ go mod init \
   github.com/andicrypt/microservices-proto/golang/${SERVICE_NAME} || true
 go mod tidy
 cd ../../
-
-git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GH_REPOSITORY}
-git add . && git commit -am "proto update" || true
-git push origin HEAD:main
-git tag -fa golang/${SERVICE_NAME}/${RELEASE_VERSION} \
-  -m "golang/${SERVICE_NAME}/${RELEASE_VERSION}" 
-git push origin refs/tags/golang/${SERVICE_NAME}/${RELEASE_VERSION}
 
 echo "Finish protoc generation for ${SERVICE_NAME}"
