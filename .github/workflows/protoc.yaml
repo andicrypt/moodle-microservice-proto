@@ -6,7 +6,7 @@ on:
 
 jobs:
   protoc:
-    name: "Generate"
+    name: "Generate Protoc"
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
