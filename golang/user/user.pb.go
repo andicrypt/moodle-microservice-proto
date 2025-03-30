@@ -23,8 +23,9 @@ const (
 
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Role          string                 `protobuf:"bytes,2,opt,name=role,proto3" json:"role,omitempty"`
+	Fullname      string                 `protobuf:"bytes,1,opt,name=fullname,proto3" json:"fullname,omitempty"`
+	ProfileUrl    string                 `protobuf:"bytes,2,opt,name=profile_url,json=profileUrl,proto3" json:"profile_url,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,16 +60,23 @@ func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateUserRequest) GetEmail() string {
+func (x *CreateUserRequest) GetFullname() string {
 	if x != nil {
-		return x.Email
+		return x.Fullname
 	}
 	return ""
 }
 
-func (x *CreateUserRequest) GetRole() string {
+func (x *CreateUserRequest) GetProfileUrl() string {
 	if x != nil {
-		return x.Role
+		return x.ProfileUrl
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
 	}
 	return ""
 }
@@ -163,9 +171,9 @@ func (x *GetUserRequest) GetUserId() int64 {
 
 type GetUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ProfilePhoto  string                 `protobuf:"bytes,1,opt,name=profile_photo,json=profilePhoto,proto3" json:"profile_photo,omitempty"`
-	Fullname      string                 `protobuf:"bytes,3,opt,name=fullname,proto3" json:"fullname,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Fullname      string                 `protobuf:"bytes,1,opt,name=fullname,proto3" json:"fullname,omitempty"`
+	ProfileUrl    string                 `protobuf:"bytes,2,opt,name=profile_url,json=profileUrl,proto3" json:"profile_url,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -200,16 +208,16 @@ func (*GetUserResponse) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetUserResponse) GetProfilePhoto() string {
+func (x *GetUserResponse) GetFullname() string {
 	if x != nil {
-		return x.ProfilePhoto
+		return x.Fullname
 	}
 	return ""
 }
 
-func (x *GetUserResponse) GetFullname() string {
+func (x *GetUserResponse) GetProfileUrl() string {
 	if x != nil {
-		return x.Fullname
+		return x.ProfileUrl
 	}
 	return ""
 }
@@ -225,18 +233,21 @@ var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x0fuser/user.proto\"=\n" +
-	"\x11CreateUserRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
-	"\x04role\x18\x02 \x01(\tR\x04role\"-\n" +
+	"\x0fuser/user.proto\"f\n" +
+	"\x11CreateUserRequest\x12\x1a\n" +
+	"\bfullname\x18\x01 \x01(\tR\bfullname\x12\x1f\n" +
+	"\vprofile_url\x18\x02 \x01(\tR\n" +
+	"profileUrl\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"-\n" +
 	"\x12CreateUserResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\")\n" +
 	"\x0eGetUserRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"h\n" +
-	"\x0fGetUserResponse\x12#\n" +
-	"\rprofile_photo\x18\x01 \x01(\tR\fprofilePhoto\x12\x1a\n" +
-	"\bfullname\x18\x03 \x01(\tR\bfullname\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email2h\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"d\n" +
+	"\x0fGetUserResponse\x12\x1a\n" +
+	"\bfullname\x18\x01 \x01(\tR\bfullname\x12\x1f\n" +
+	"\vprofile_url\x18\x02 \x01(\tR\n" +
+	"profileUrl\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email2h\n" +
 	"\x04User\x123\n" +
 	"\x06Create\x12\x12.CreateUserRequest\x1a\x13.CreateUserResponse\"\x00\x12+\n" +
 	"\x03Get\x12\x10.GetUserResponse\x1a\x10.GetUserResponse\"\x00B5Z3github.com/andicrypt/moodle-microservice-proto/userb\x06proto3"
