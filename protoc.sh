@@ -31,7 +31,7 @@ for SERVICE_NAME in "${SERVICES[@]}"; do
     ./${SERVICE_NAME}/*.proto
     cd golang/${SERVICE_NAME}
     go mod init \
-    github.com/andicrypt/moodle-microservices-proto/golang/${SERVICE_NAME} || true
+    github.com/andicrypt/moodle-microservice-proto/golang/${SERVICE_NAME} || true
     go mod tidy
     cd ../../
  
