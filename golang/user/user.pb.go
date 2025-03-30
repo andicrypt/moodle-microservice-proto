@@ -247,10 +247,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\bfullname\x18\x01 \x01(\tR\bfullname\x12\x1f\n" +
 	"\vprofile_url\x18\x02 \x01(\tR\n" +
 	"profileUrl\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email2h\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email2g\n" +
 	"\x04User\x123\n" +
-	"\x06Create\x12\x12.CreateUserRequest\x1a\x13.CreateUserResponse\"\x00\x12+\n" +
-	"\x03Get\x12\x10.GetUserResponse\x1a\x10.GetUserResponse\"\x00B5Z3github.com/andicrypt/moodle-microservice-proto/userb\x06proto3"
+	"\x06Create\x12\x12.CreateUserRequest\x1a\x13.CreateUserResponse\"\x00\x12*\n" +
+	"\x03Get\x12\x0f.GetUserRequest\x1a\x10.GetUserResponse\"\x00B5Z3github.com/andicrypt/moodle-microservice-proto/userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
@@ -273,7 +273,7 @@ var file_user_user_proto_goTypes = []any{
 }
 var file_user_user_proto_depIdxs = []int32{
 	0, // 0: User.Create:input_type -> CreateUserRequest
-	3, // 1: User.Get:input_type -> GetUserResponse
+	2, // 1: User.Get:input_type -> GetUserRequest
 	1, // 2: User.Create:output_type -> CreateUserResponse
 	3, // 3: User.Get:output_type -> GetUserResponse
 	2, // [2:4] is the sub-list for method output_type
