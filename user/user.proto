@@ -3,8 +3,9 @@ syntax = "proto3";
 option go_package = "github.com/andicrypt/moodle-microservice-proto/user";
 
 message CreateUserRequest {
-    string email = 1;
-    string role = 2;
+    string fullname = 1;
+    string profile_url = 2;
+    string email = 3;
 }
 
 message CreateUserResponse {
@@ -16,9 +17,9 @@ message GetUserRequest {
 }
 
 message GetUserResponse {
-    string profile_photo = 1;
-    string fullname = 3;
-    string email = 2;
+    string fullname = 1;
+    string profile_url = 2;
+    string email = 3;
 }
 
 service User {
