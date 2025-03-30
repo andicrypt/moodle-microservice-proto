@@ -26,23 +26,21 @@ fi
 
 
 for SERVICE_NAME in "${SERVICES[@]}"; do
-    protoc --go_out=./golang --go_opt=paths=source_relative \
-    --go-grpc_out=./golang --go-grpc_opt=paths=source_relative \
-    ./${SERVICE_NAME}/*.proto
-    cd golang/${SERVICE_NAME}
-    go mod init \
-    github.com/andicrypt/moodle-microservice-proto/golang/${SERVICE_NAME} || true
-    go mod tidy
-    cd ../../
- 
- 
+  protoc --go_out=./golang --go_opt=paths=source_relative \
+  --go-grpc_out=./golang --go-grpc_opt=paths=source_relative \
+  ./${SERVICE_NAME}/*.proto
+  cd golang/${SERVICE_NAME}
+  go mod init \
+  github.com/andicrypt/moodle-microservice-proto/golang/${SERVICE_NAME} || true
+  go mod tidy
+  cd ../../
+
+  git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GH_REPOSITORY}
+  git remote -v
+
+  git add .
+  git commit -m "Proto update - ${RELEASE_VERSION}" || echo "No changes to commit"
+  git push origin HEAD:main
+  git tag -fa "golang/${SERVICE_NAME}/${RELEASE_VERSION}" -m "golang/${SERVICE_NAME}/${RELEASE_VERSION}"
+  git push origin "refs/tags/golang/${SERVICE_NAME}/${RELEASE_VERSION}"
 done
-
-git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GH_REPOSITORY}
-git remote -v
-
-git add .
-git commit -m "Proto update - ${RELEASE_VERSION}" || echo "No changes to commit"
-git push origin HEAD:main
-git tag -fa "golang/${RELEASE_VERSION}" -m "golang/${RELEASE_VERSION}"
-git push origin "refs/tags/golang/${RELEASE_VERSION}"
