@@ -23,11 +23,12 @@ message LoginResponse {
 }
 
 message LogoutRequest {
-    int64 user_id = 1;
+    int64 email = 1;
+    string refresh_key = 2;
 }
 
 message LogoutResponse {
-
+    bool success = 1;
 }
 
 service Auth {
