@@ -231,7 +231,8 @@ func (x *LoginResponse) GetRefreshKey() string {
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Email         int64                  `protobuf:"varint,1,opt,name=email,proto3" json:"email,omitempty"`
+	RefreshKey    string                 `protobuf:"bytes,2,opt,name=refresh_key,json=refreshKey,proto3" json:"refresh_key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -266,15 +267,23 @@ func (*LogoutRequest) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *LogoutRequest) GetUserId() int64 {
+func (x *LogoutRequest) GetEmail() int64 {
 	if x != nil {
-		return x.UserId
+		return x.Email
 	}
 	return 0
 }
 
+func (x *LogoutRequest) GetRefreshKey() string {
+	if x != nil {
+		return x.RefreshKey
+	}
+	return ""
+}
+
 type LogoutResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -309,6 +318,13 @@ func (*LogoutResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{5}
 }
 
+func (x *LogoutResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
@@ -328,10 +344,13 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
 	"access_key\x18\x01 \x01(\tR\taccessKey\x12\x1f\n" +
 	"\vrefresh_key\x18\x02 \x01(\tR\n" +
-	"refreshKey\"(\n" +
-	"\rLogoutRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\x10\n" +
-	"\x0eLogoutResponse2\x8f\x01\n" +
+	"refreshKey\"F\n" +
+	"\rLogoutRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\x03R\x05email\x12\x1f\n" +
+	"\vrefresh_key\x18\x02 \x01(\tR\n" +
+	"refreshKey\"*\n" +
+	"\x0eLogoutResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\x8f\x01\n" +
 	"\x04Auth\x120\n" +
 	"\rCreateAccount\x12\x0e.LogoutRequest\x1a\r.LoginRequest\"\x00\x12(\n" +
 	"\x05Login\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x12+\n" +
