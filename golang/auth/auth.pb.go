@@ -231,7 +231,7 @@ func (x *LoginResponse) GetRefreshKey() string {
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         int64                  `protobuf:"varint,1,opt,name=email,proto3" json:"email,omitempty"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	RefreshKey    string                 `protobuf:"bytes,2,opt,name=refresh_key,json=refreshKey,proto3" json:"refresh_key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -267,11 +267,11 @@ func (*LogoutRequest) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *LogoutRequest) GetEmail() int64 {
+func (x *LogoutRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
-	return 0
+	return ""
 }
 
 func (x *LogoutRequest) GetRefreshKey() string {
@@ -346,7 +346,7 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\vrefresh_key\x18\x02 \x01(\tR\n" +
 	"refreshKey\"F\n" +
 	"\rLogoutRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\x03R\x05email\x12\x1f\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1f\n" +
 	"\vrefresh_key\x18\x02 \x01(\tR\n" +
 	"refreshKey\"*\n" +
 	"\x0eLogoutResponse\x12\x18\n" +
