@@ -2,13 +2,13 @@ syntax = "proto3";
 
 option go_package = "github.com/andicrypt/moodle-microservice-proto/auth";
 
-message CreateAccountRequest {
+message SignupRequest {
     string email = 1;
     string password = 2;
 }
 
-message CreateAccountResponse {
-
+message SignupResponse {
+    int64 account_id = 1;
 }
 
 message LoginRequest {
@@ -17,11 +17,12 @@ message LoginRequest {
 }
 
 message LoginResponse {
-    
+    string access_key = 1;
+    string refresh_key = 2;
 }
 
 message LogoutRequest {
-
+    int64 user_id = 1;
 }
 
 message LogoutResponse {
@@ -29,7 +30,7 @@ message LogoutResponse {
 }
 
 service Auth {
-    rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse){}
+    rpc CreateAccount(LogoutRequest) returns (LoginRequest){}
     rpc Login(LoginRequest) returns (LoginResponse){}
     rpc Logout(LogoutRequest) returns (LogoutResponse){}
 }
