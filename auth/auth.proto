@@ -31,8 +31,18 @@ message LogoutResponse {
     bool success = 1;
 }
 
+message RefreshAccessTokenRequest {
+    string email = 1;
+    string refresh_key = 2;
+}
+
+message RefreshAccessTokenResponse {
+    string access_key = 1;
+}
+
 service Auth {
-    rpc CreateAccount(LogoutRequest) returns (LoginRequest){}
+    rpc Signup(SignupRequest) returns (SignupResponse){}
     rpc Login(LoginRequest) returns (LoginResponse){}
     rpc Logout(LogoutRequest) returns (LogoutResponse){}
+    rpc RefreshAccessToken(RefreshAccessTokenRequest) returns (RefreshAccessTokenResponse){}
 }
