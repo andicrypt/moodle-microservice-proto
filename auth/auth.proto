@@ -5,6 +5,7 @@ option go_package = "github.com/andicrypt/moodle-microservice-proto/auth";
 message SignupRequest {
     string email = 1;
     string password = 2;
+    string role = 3;
 }
 
 message SignupResponse {
