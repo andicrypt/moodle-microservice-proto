@@ -23,7 +23,7 @@ message LoginResponse {
 }
 
 message LogoutRequest {
-    int64 email = 1;
+    string email = 1;
     string refresh_key = 2;
 }
 
