@@ -23,9 +23,10 @@ const (
 
 type CreateCourseRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
-	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	TeacherId     int64                  `protobuf:"varint,3,opt,name=teacher_id,json=teacherId,proto3" json:"teacher_id,omitempty"`
+	CourseCode    string                 `protobuf:"bytes,1,opt,name=course_code,json=courseCode,proto3" json:"course_code,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	TeacherId     int64                  `protobuf:"varint,4,opt,name=teacher_id,json=teacherId,proto3" json:"teacher_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -58,6 +59,13 @@ func (x *CreateCourseRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateCourseRequest.ProtoReflect.Descriptor instead.
 func (*CreateCourseRequest) Descriptor() ([]byte, []int) {
 	return file_course_course_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CreateCourseRequest) GetCourseCode() string {
+	if x != nil {
+		return x.CourseCode
+	}
+	return ""
 }
 
 func (x *CreateCourseRequest) GetTitle() string {
@@ -171,9 +179,10 @@ func (x *GetCourseRequest) GetCourseId() int64 {
 
 type GetCourseResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
-	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	TeacherId     int64                  `protobuf:"varint,3,opt,name=teacher_id,json=teacherId,proto3" json:"teacher_id,omitempty"`
+	CourseCode    string                 `protobuf:"bytes,1,opt,name=course_code,json=courseCode,proto3" json:"course_code,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	TeacherId     int64                  `protobuf:"varint,4,opt,name=teacher_id,json=teacherId,proto3" json:"teacher_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -208,6 +217,13 @@ func (*GetCourseResponse) Descriptor() ([]byte, []int) {
 	return file_course_course_proto_rawDescGZIP(), []int{3}
 }
 
+func (x *GetCourseResponse) GetCourseCode() string {
+	if x != nil {
+		return x.CourseCode
+	}
+	return ""
+}
+
 func (x *GetCourseResponse) GetTitle() string {
 	if x != nil {
 		return x.Title
@@ -233,21 +249,25 @@ var File_course_course_proto protoreflect.FileDescriptor
 
 const file_course_course_proto_rawDesc = "" +
 	"\n" +
-	"\x13course/course.proto\"l\n" +
-	"\x13CreateCourseRequest\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1d\n" +
+	"\x13course/course.proto\"\x8d\x01\n" +
+	"\x13CreateCourseRequest\x12\x1f\n" +
+	"\vcourse_code\x18\x01 \x01(\tR\n" +
+	"courseCode\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1d\n" +
 	"\n" +
-	"teacher_id\x18\x03 \x01(\x03R\tteacherId\"3\n" +
+	"teacher_id\x18\x04 \x01(\x03R\tteacherId\"3\n" +
 	"\x14CreateCourseResponse\x12\x1b\n" +
 	"\tcourse_id\x18\x01 \x01(\x03R\bcourseId\"/\n" +
 	"\x10GetCourseRequest\x12\x1b\n" +
-	"\tcourse_id\x18\x01 \x01(\x03R\bcourseId\"j\n" +
-	"\x11GetCourseResponse\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1d\n" +
+	"\tcourse_id\x18\x01 \x01(\x03R\bcourseId\"\x8b\x01\n" +
+	"\x11GetCourseResponse\x12\x1f\n" +
+	"\vcourse_code\x18\x01 \x01(\tR\n" +
+	"courseCode\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1d\n" +
 	"\n" +
-	"teacher_id\x18\x03 \x01(\x03R\tteacherId2q\n" +
+	"teacher_id\x18\x04 \x01(\x03R\tteacherId2q\n" +
 	"\x06Course\x127\n" +
 	"\x06Create\x12\x14.CreateCourseRequest\x1a\x15.CreateCourseResponse\"\x00\x12.\n" +
 	"\x03Get\x12\x11.GetCourseRequest\x1a\x12.GetCourseResponse\"\x00B7Z5github.com/andicrypt/moodle-microservice-proto/courseb\x06proto3"
