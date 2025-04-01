@@ -10,6 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
+	sync "sync"
 	unsafe "unsafe"
 )
 
@@ -20,16 +21,263 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type CreateCourseRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	TeacherId     int64                  `protobuf:"varint,3,opt,name=teacher_id,json=teacherId,proto3" json:"teacher_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCourseRequest) Reset() {
+	*x = CreateCourseRequest{}
+	mi := &file_course_course_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCourseRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCourseRequest) ProtoMessage() {}
+
+func (x *CreateCourseRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_course_course_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCourseRequest.ProtoReflect.Descriptor instead.
+func (*CreateCourseRequest) Descriptor() ([]byte, []int) {
+	return file_course_course_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CreateCourseRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *CreateCourseRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *CreateCourseRequest) GetTeacherId() int64 {
+	if x != nil {
+		return x.TeacherId
+	}
+	return 0
+}
+
+type CreateCourseResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CourseId      int64                  `protobuf:"varint,1,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCourseResponse) Reset() {
+	*x = CreateCourseResponse{}
+	mi := &file_course_course_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCourseResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCourseResponse) ProtoMessage() {}
+
+func (x *CreateCourseResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_course_course_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCourseResponse.ProtoReflect.Descriptor instead.
+func (*CreateCourseResponse) Descriptor() ([]byte, []int) {
+	return file_course_course_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateCourseResponse) GetCourseId() int64 {
+	if x != nil {
+		return x.CourseId
+	}
+	return 0
+}
+
+type GetCourseRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CourseId      int64                  `protobuf:"varint,1,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCourseRequest) Reset() {
+	*x = GetCourseRequest{}
+	mi := &file_course_course_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCourseRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCourseRequest) ProtoMessage() {}
+
+func (x *GetCourseRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_course_course_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCourseRequest.ProtoReflect.Descriptor instead.
+func (*GetCourseRequest) Descriptor() ([]byte, []int) {
+	return file_course_course_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetCourseRequest) GetCourseId() int64 {
+	if x != nil {
+		return x.CourseId
+	}
+	return 0
+}
+
+type GetCourseResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	TeacherId     int64                  `protobuf:"varint,3,opt,name=teacher_id,json=teacherId,proto3" json:"teacher_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCourseResponse) Reset() {
+	*x = GetCourseResponse{}
+	mi := &file_course_course_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCourseResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCourseResponse) ProtoMessage() {}
+
+func (x *GetCourseResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_course_course_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCourseResponse.ProtoReflect.Descriptor instead.
+func (*GetCourseResponse) Descriptor() ([]byte, []int) {
+	return file_course_course_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetCourseResponse) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *GetCourseResponse) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *GetCourseResponse) GetTeacherId() int64 {
+	if x != nil {
+		return x.TeacherId
+	}
+	return 0
+}
+
 var File_course_course_proto protoreflect.FileDescriptor
 
 const file_course_course_proto_rawDesc = "" +
 	"\n" +
-	"\x13course/course.protoB7Z5github.com/andicrypt/moodle-microservice-proto/courseb\x06proto3"
+	"\x13course/course.proto\"l\n" +
+	"\x13CreateCourseRequest\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1d\n" +
+	"\n" +
+	"teacher_id\x18\x03 \x01(\x03R\tteacherId\"3\n" +
+	"\x14CreateCourseResponse\x12\x1b\n" +
+	"\tcourse_id\x18\x01 \x01(\x03R\bcourseId\"/\n" +
+	"\x10GetCourseRequest\x12\x1b\n" +
+	"\tcourse_id\x18\x01 \x01(\x03R\bcourseId\"j\n" +
+	"\x11GetCourseResponse\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1d\n" +
+	"\n" +
+	"teacher_id\x18\x03 \x01(\x03R\tteacherId2q\n" +
+	"\x06Course\x127\n" +
+	"\x06Create\x12\x14.CreateCourseRequest\x1a\x15.CreateCourseResponse\"\x00\x12.\n" +
+	"\x03Get\x12\x11.GetCourseRequest\x1a\x12.GetCourseResponse\"\x00B7Z5github.com/andicrypt/moodle-microservice-proto/courseb\x06proto3"
 
-var file_course_course_proto_goTypes = []any{}
+var (
+	file_course_course_proto_rawDescOnce sync.Once
+	file_course_course_proto_rawDescData []byte
+)
+
+func file_course_course_proto_rawDescGZIP() []byte {
+	file_course_course_proto_rawDescOnce.Do(func() {
+		file_course_course_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_course_course_proto_rawDesc), len(file_course_course_proto_rawDesc)))
+	})
+	return file_course_course_proto_rawDescData
+}
+
+var file_course_course_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_course_course_proto_goTypes = []any{
+	(*CreateCourseRequest)(nil),  // 0: CreateCourseRequest
+	(*CreateCourseResponse)(nil), // 1: CreateCourseResponse
+	(*GetCourseRequest)(nil),     // 2: GetCourseRequest
+	(*GetCourseResponse)(nil),    // 3: GetCourseResponse
+}
 var file_course_course_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
+	0, // 0: Course.Create:input_type -> CreateCourseRequest
+	2, // 1: Course.Get:input_type -> GetCourseRequest
+	1, // 2: Course.Create:output_type -> CreateCourseResponse
+	3, // 3: Course.Get:output_type -> GetCourseResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -46,12 +294,13 @@ func file_course_course_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_course_course_proto_rawDesc), len(file_course_course_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   0,
+			NumMessages:   4,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_course_course_proto_goTypes,
 		DependencyIndexes: file_course_course_proto_depIdxs,
+		MessageInfos:      file_course_course_proto_msgTypes,
 	}.Build()
 	File_course_course_proto = out.File
 	file_course_course_proto_goTypes = nil
