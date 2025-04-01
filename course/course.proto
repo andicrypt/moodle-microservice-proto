@@ -7,6 +7,7 @@ message CreateCourseRequest {
     string title = 2;
     string description = 3;
     int64 teacher_id = 4;
+    string version = 5;
 }
 
 message CreateCourseResponse {
@@ -22,6 +23,7 @@ message GetCourseResponse {
     string title = 2;
     string description = 3;
     int64 teacher_id = 4;
+    string version = 5;
 }
 
 service Course {
