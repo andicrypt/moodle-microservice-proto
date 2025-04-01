@@ -3,9 +3,10 @@ syntax = "proto3";
 option go_package = "github.com/andicrypt/moodle-microservice-proto/course";
 
 message CreateCourseRequest {
-    string title = 1;
-    string description = 2;
-    int64 teacher_id = 3;
+    string course_code = 1;
+    string title = 2;
+    string description = 3;
+    int64 teacher_id = 4;
 }
 
 message CreateCourseResponse {
@@ -17,9 +18,10 @@ message GetCourseRequest {
 }
 
 message GetCourseResponse {
-    string title = 1;
-    string description = 2;
-    int64 teacher_id = 3;
+    string course_code = 1;
+    string title = 2;
+    string description = 3;
+    int64 teacher_id = 4;
 }
 
 service Course {
