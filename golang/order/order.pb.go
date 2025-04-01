@@ -75,7 +75,7 @@ func (x *CreateOrderRequest) GetOrderItems() []*OrderItem {
 
 type OrderItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CourseId      string                 `protobuf:"bytes,1,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
+	CourseId      int64                  `protobuf:"varint,1,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
 	Price         int64                  `protobuf:"varint,2,opt,name=price,proto3" json:"price,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -111,11 +111,11 @@ func (*OrderItem) Descriptor() ([]byte, []int) {
 	return file_order_order_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *OrderItem) GetCourseId() string {
+func (x *OrderItem) GetCourseId() int64 {
 	if x != nil {
 		return x.CourseId
 	}
-	return ""
+	return 0
 }
 
 func (x *OrderItem) GetPrice() int64 {
@@ -276,7 +276,7 @@ const file_order_order_proto_rawDesc = "" +
 	".OrderItemR\n" +
 	"orderItems\">\n" +
 	"\tOrderItem\x12\x1b\n" +
-	"\tcourse_id\x18\x01 \x01(\tR\bcourseId\x12\x14\n" +
+	"\tcourse_id\x18\x01 \x01(\x03R\bcourseId\x12\x14\n" +
 	"\x05price\x18\x02 \x01(\x03R\x05price\"0\n" +
 	"\x13CreateOrderResponse\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\x03R\aorderId\",\n" +
