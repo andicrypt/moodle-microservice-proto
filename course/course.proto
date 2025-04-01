@@ -1,3 +1,28 @@
 syntax = "proto3";
 
 option go_package = "github.com/andicrypt/moodle-microservice-proto/course";
+
+message CreateCourseRequest {
+    string title = 1;
+    string description = 2;
+    int64 teacher_id = 3;
+}
+
+message CreateCourseResponse {
+    int64 course_id = 1;
+}
+
+message GetCourseRequest {
+    int64 course_id = 1;
+}
+
+message GetCourseResponse {
+    string title = 1;
+    string description = 2;
+    int64 teacher_id = 3;
+}
+
+service Course {
+    rpc Create(CreateCourseRequest) returns (CreateCourseResponse){}
+    rpc Get(GetCourseRequest) returns (GetCourseResponse) {}
+}
